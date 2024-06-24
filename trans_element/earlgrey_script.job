@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --account=dut374_c
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=5
+#SBATCH --time=300:00:00
+#SBATCH --output earlgrey.log
+#SBATCH --error earlgrey_error.log
+#SBATCH --job-name=earlgrey_icteria_virens
+#SBATCH --mem-per-cpu=5GB
+#SBATCH --partition=burst 
+#SBATCH --qos=burst4x 
+
+source ~/.bashrc
+mamba activate earlgrey
+
+earlGrey -g /storage/group/dut374/default/johanna/trans_elemt/D1907004328.gapcloser.fasta -s icteriaVirenssbatc -t 5 -o /storage/group/dut374/default/johanna/trans_elemt/eg/output_ictvir -r eukarya
